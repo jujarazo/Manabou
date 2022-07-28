@@ -1,3 +1,3 @@
-# Create T3 App
+# Manabou
 
-This is an app bootstrapped according to the [init.tips](https://init.tips) stack, also known as the T3-Stack.
+Manabou, a way to save the Japanese vocabulary you find in the wild
