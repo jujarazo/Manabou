@@ -23,7 +23,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="container mx-auto flex flex-col items-center justify-center h-screen p-4">
-        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-light-purple">
+        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold">
           Create <span className="text-salmon">T3</span> App
         </h1>
         <p className="text-2xl text-gray-700">This stack uses:</p>
