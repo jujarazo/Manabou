@@ -1,6 +1,6 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import { trpc } from "../utils/trpc";
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { trpc } from '../utils/trpc';
 
 type TechnologyCardProps = {
   name: string;
@@ -9,19 +9,10 @@ type TechnologyCardProps = {
 };
 
 const Home: NextPage = () => {
-  const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
+  const hello = trpc.useQuery(['example.hello', { text: 'from tRPC' }]);
 
   return (
     <>
-      <Head>
-        <title>Manabou</title>
-        <meta
-          name="description"
-          content="Save the japanese vocabulary you find in the wild"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main className="container mx-auto flex flex-col items-center justify-center h-screen p-4">
         <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold">
           Create <span className="text-salmon">T3</span> App
