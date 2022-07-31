@@ -1,9 +1,18 @@
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function SignIn() {
   return (
-    <div className="h-screen">
-      <div className="bg-white rounded-t-3xl mt-96 h-full p-6">
+    <div className="h-screen flex flex-col justify-end">
+      <div className="flex justify-center mb-20">
+        <Image
+          src="/images/Logo_V0.png"
+          width={228}
+          height={235}
+          alt="The Logo"
+        />
+      </div>
+      <div className="bg-white rounded-t-3xl h-1/2 p-6 w-full">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="mt-6 text-center text-xl font-extrabold text-gray-900">
             Sign In
@@ -25,7 +34,7 @@ export default function SignIn() {
                       type="email"
                       autoComplete="email"
                       required
-                      className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 shadow-sm placeholder:text-gray-400 focus:border-salmon focus:outline-none focus:ring-salmon sm:text-sm"
+                      className="block w-full appearance-none rounded-md border border-salmon px-3 py-2 shadow-sm placeholder:text-gray-400 focus:ring-salmon focus:ring-2 focus:outline-none sm:text-sm"
                     />
                   </div>
                 </div>
@@ -44,7 +53,7 @@ export default function SignIn() {
                       type="password"
                       autoComplete="current-password"
                       required
-                      className="block w-full appearance-none rounded-md border border-salmon px-3 py-2 shadow-sm placeholder:text-gray-400 focus:border-salmon focus:outline-none focus:ring-salmon sm:text-sm"
+                      className="block w-full appearance-none rounded-md border border-salmon px-3 py-2 shadow-sm placeholder:text-gray-400 focus:ring-salmon focus:ring-2 focus:outline-none focus:ring-salmon sm:text-sm"
                     />
                   </div>
                 </div>
