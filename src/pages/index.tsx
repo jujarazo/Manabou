@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import { trpc } from '../utils/trpc';
 
 type TechnologyCardProps = {
@@ -36,7 +35,7 @@ const Home: NextPage = () => {
           />
           <TechnologyCard
             name="tRPC"
-            description="End-to-end typesafe APIs made easy"
+            description="End-to-end type-safe APIs made easy"
             documentation="https://trpc.io/"
           />
         </div>
