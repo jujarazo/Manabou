@@ -6,6 +6,7 @@ import superjson from 'superjson';
 import { SessionProvider } from 'next-auth/react';
 import '../styles/globals.css';
 import { Meta } from '../layout/Meta';
+import { MainLayout } from '../layout/MainLayout';
 
 const MyApp: AppType = ({
   Component,
@@ -14,7 +15,9 @@ const MyApp: AppType = ({
   return (
     <SessionProvider session={session}>
       <Meta />
-      <Component {...pageProps} />
+      <MainLayout>
+        <Component {...pageProps} />
+      </MainLayout>
     </SessionProvider>
   );
 };
