@@ -14,7 +14,7 @@ export default function SignIn() {
       </div>
       <div className="bg-white rounded-t-3xl h-1/2 p-6 w-full sm:rounded-none sm:w-1/2 sm:h-full sm:flex sm:items-center">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h2 className="mt-6 text-center text-xl font-extrabold text-gray-900">
+          <h2 className="mt-2 text-center text-xl font-extrabold text-gray-900">
             Sign In
           </h2>
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -90,6 +90,11 @@ export default function SignIn() {
                   >
                     Sign In
                   </button>
+                </div>
+                <div className="flex text-center">
+                  <Link href="/auth/sign-up">
+                    <a className="w-full text-salmon font-semibold">Register</a>
+                  </Link>
                 </div>
               </form>
             </div>
