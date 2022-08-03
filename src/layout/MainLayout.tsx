@@ -1,10 +1,14 @@
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import { Loader } from '../components/commons/Loader';
 
 export const MainLayout = ({ children }: { children: ReactNode }) => {
   const { data, status } = useSession();
-  console.log(status);
+  const router = useRouter();
+  const isLoginRoute = router.pathname.includes('auth');
+  console.log(router.pathname);
+
   if (status === 'loading') {
     return (
       <div className="h-screen">
@@ -12,5 +16,10 @@ export const MainLayout = ({ children }: { children: ReactNode }) => {
       </div>
     );
   }
+
+  if (status === 'unauthenticated' && !isLoginRoute) {
+    router.push('/auth/sign-in');
+  }
+
   return <div>{children}</div>;
 };
