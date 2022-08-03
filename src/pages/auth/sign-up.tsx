@@ -1,3 +1,9 @@
+import { AuthLayout } from '../../layout/AuthLayout';
+
 export default function SignUp() {
-  return <div></div>;
+  return (
+    <AuthLayout>
+      <div>Sign up</div>
+    </AuthLayout>
+  );
 }
