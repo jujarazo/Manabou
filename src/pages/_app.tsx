@@ -28,7 +28,7 @@ const getBaseUrl = () => {
   }
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
 
-  return `http://localhost:${process.env.PORT ?? 3000}`; // dev SSR should use localhost
+  return `http://localhost:${process.env.PORT ?? 3001}`; // dev SSR should use localhost Change when its 3000
 };
 
 export default withTRPC<AppRouter>({
@@ -41,6 +41,9 @@ export default withTRPC<AppRouter>({
 
     return {
       url,
+      headers: {
+        "x-ssr": "1"
+      },
       transformer: superjson,
       /**
        * @link https://react-query.tanstack.com/reference/QueryClient
@@ -51,5 +54,5 @@ export default withTRPC<AppRouter>({
   /**
    * @link https://trpc.io/docs/ssr
    */
-  ssr: false,
+  ssr: true,
 })(MyApp);
