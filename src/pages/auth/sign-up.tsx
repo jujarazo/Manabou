@@ -5,23 +5,31 @@ import { authSchema, IAuth } from '../../commons/validations/auth';
 import { AuthLayout } from '../../layout/AuthLayout';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { trpc } from '../../utils/trpc';
-import { useCallback } from 'react';
 
 export default function SignUp() {
   const router = useRouter();
-  const { register, handleSubmit } = useForm<IAuth>({
+  const { register } = useForm<IAuth>({
     resolver: zodResolver(authSchema)
   });
 
-  const { mutateAsync } = trpc.useMutation(["signupsign-up"]);
+  const { mutateAsync } = trpc.useMutation(["signup.sign-up"]);
 
-  const onSubmit = useCallback(
-    async (data: IAuth) => {
-      const result = await mutateAsync(data);
-      if (result.status === 201) {
-        router.push("/auth/sign-in");
-      }
-    }, [mutateAsync, router]);
+  const onSignUp = async (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const data: IAuth = {
+      email: e.target.email.value,
+      password: e.target.password.value
+    }
+
+    console.log("aca");
+    const result = await mutateAsync(data);
+
+    if (result.status === 201) {
+      router.push("/");
+    }
+  }
 
   return (
     <AuthLayout>
@@ -31,7 +39,7 @@ export default function SignUp() {
         </h2>
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <div className="px-4 py-5 sm:rounded-lg sm:px-10">
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={onSignUp}>
               <div>
                 <label
                   htmlFor="email"
@@ -44,6 +52,7 @@ export default function SignUp() {
                     id="email"
                     name="email"
                     type="email"
+                    {...register}
                     required
                     className="block w-full appearance-none rounded-md border border-salmon px-3 py-2 shadow-sm placeholder:text-gray-400 focus:ring-salmon focus:ring-2 focus:outline-none sm:text-sm"
                   />
@@ -62,6 +71,7 @@ export default function SignUp() {
                     id="password"
                     name="password"
                     type="password"
+                    {...register}
                     required
                     className="block w-full appearance-none rounded-md border border-salmon px-3 py-2 shadow-sm placeholder:text-gray-400 focus:ring-salmon focus:ring-2 focus:outline-none sm:text-sm"
                   />
@@ -79,7 +89,7 @@ export default function SignUp() {
                   <input
                     id="confirmPassword"
                     name="confirmPassword"
-                    type="confirmPassword"
+                    type="password"
                     required
                     className="block w-full appearance-none rounded-md border border-salmon px-3 py-2 shadow-sm placeholder:text-gray-400 focus:ring-salmon focus:ring-2 focus:outline-none sm:text-sm"
                   />
