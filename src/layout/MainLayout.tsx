@@ -7,7 +7,6 @@ export const MainLayout = ({ children }: { children: ReactNode }) => {
   const { data, status } = useSession();
   const router = useRouter();
   const isLoginRoute = router.pathname.includes('auth');
-  console.log(router.pathname);
 
   if (status === 'loading') {
     return (
