@@ -5,7 +5,14 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "../../../server/db/client";
 import Credentials from "next-auth/providers/credentials";
 import { authSchema } from "../../../commons/validations/auth";
-import { verify } from "argon2";
+import { compare } from "bcrypt";
+
+const verifyPassHash = (plainPassword: string, hashedPassword: string) => 
+  new Promise((resolve) => {
+    compare(plainPassword, hashedPassword, (_err: any, res: any) =>
+      resolve(res)
+    );
+  });
 
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
@@ -51,7 +58,7 @@ export const authOptions: NextAuthOptions = {
 
         if (!user) return null;
 
-        const isValidPass = await verify(user.password, creds.password);
+        const isValidPass = await verifyPassHash(creds.password, user.password);
 
         if (!isValidPass) return null;
 

@@ -1,7 +1,28 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useForm } from 'react-hook-form';
+import { authSchema, IAuth } from '../../commons/validations/auth';
 import { AuthLayout } from '../../layout/AuthLayout';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { trpc } from '../../utils/trpc';
+import { useCallback } from 'react';
 
 export default function SignUp() {
+  const router = useRouter();
+  const { register, handleSubmit } = useForm<IAuth>({
+    resolver: zodResolver(authSchema)
+  });
+
+  const { mutateAsync } = trpc.useMutation(["signupsign-up"]);
+
+  const onSubmit = useCallback(
+    async (data: IAuth) => {
+      const result = await mutateAsync(data);
+      if (result.status === 201) {
+        router.push("/auth/sign-in");
+      }
+    }, [mutateAsync, router]);
+
   return (
     <AuthLayout>
       <>

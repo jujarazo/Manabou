@@ -1,7 +1,7 @@
 import { authSchema } from "../../commons/validations/auth";
 import * as trpc from "@trpc/server";
 import { createRouter } from "./context";
-import { hash } from "argon2";
+import { hash } from 'bcrypt';
 
 export const signupRouter = createRouter()
     .mutation("sign-up", {
@@ -20,7 +20,7 @@ export const signupRouter = createRouter()
                 });
             }
 
-            const hashedPassword = await hash(password);
+            const hashedPassword = await hash(password, 10);
 
             const result = await ctx.prisma.user.create({
                 data: { email, password: hashedPassword }
