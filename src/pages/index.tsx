@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useSession } from 'next-auth/react';
+import { requireAuth } from '../commons/requireAuth';
 import { trpc } from '../utils/trpc';
 
 type TechnologyCardProps = {
@@ -7,6 +7,10 @@ type TechnologyCardProps = {
   description: string;
   documentation: string;
 };
+
+export const getServerSideProps = requireAuth(async (ctx) => {
+  return { props: {} };
+});
 
 const Home: NextPage = () => {
   // const hello = trpc.useQuery(['example.hello', { text: 'from tRPC' }]);
