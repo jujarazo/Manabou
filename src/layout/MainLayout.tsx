@@ -4,10 +4,9 @@ import { ReactNode } from 'react';
 import { Loader } from '../components/commons/Loader';
 
 export const MainLayout = ({ children }: { children: ReactNode }) => {
-  const { data, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const isLoginRoute = router.pathname.includes('auth');
-  console.log(status, data);
 
   if (status === 'loading') {
     return (
@@ -17,9 +16,9 @@ export const MainLayout = ({ children }: { children: ReactNode }) => {
     );
   }
 
-  // if (status === 'unauthenticated' && !isLoginRoute) {
-  //   router.push('/auth/sign-in');
-  // }
+  if (status === 'unauthenticated' && !isLoginRoute) {
+    router.push('/auth/sign-in');
+  }
 
   return <div>{children}</div>;
 };

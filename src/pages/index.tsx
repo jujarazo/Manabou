@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { useSession } from 'next-auth/react';
 import { trpc } from '../utils/trpc';
 
 type TechnologyCardProps = {

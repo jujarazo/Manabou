@@ -1,27 +1,21 @@
-import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import { authSchema, IAuth } from '../../commons/validations/auth';
+import { IAuth } from '../../commons/validations/auth';
 import { AuthLayout } from '../../layout/AuthLayout';
 
 export default function SignIn() {
-  const { register } = useForm<IAuth>({
-    resolver: zodResolver(authSchema)
-  });
-
   const onLogin = async (e: any) => {
     e.preventDefault();
     e.stopPropagation();
 
     const data: IAuth = {
       email: e.target.email.value,
-      password: e.target.password.value
-    }
+      password: e.target.password.value,
+    };
     console.log(data);
-    await signIn("credentials", {...data });
-    // await signIn("credentials", {...data, callbackUrl: "/"});
-  }
+    await signIn('credentials', { ...data, callbackUrl: '/' });
+  };
+
   return (
     <AuthLayout>
       <h2 className="mt-2 text-center text-xl font-extrabold text-gray-900">
