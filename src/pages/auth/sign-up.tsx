@@ -23,11 +23,10 @@ export default function SignUp() {
       password: e.target.password.value
     }
 
-    console.log("aca");
     const result = await mutateAsync(data);
 
     if (result.status === 201) {
-      router.push("/");
+      router.push("/auth/sign-in");
     }
   }
 

@@ -18,14 +18,17 @@ export const authOptions: NextAuthOptions = {
   // Include user.id on session
   callbacks: {
     jwt: async ({ token, user }) => {
+      console.log('user: ', user);
       if (user) {
         token.id = user.id;
         token.email = user.email;
       }
 
+      console.log("token1: ", token);
       return token
     },
     session: async ({ session, token }) => {
+      console.log("token: ", token);
       if (token) {
         session.id = token.id;
       }
@@ -51,6 +54,7 @@ export const authOptions: NextAuthOptions = {
       },
       authorize: async (credentials, request) => {
         const creds = await authSchema.parseAsync(credentials);
+        console.log("creds: ", creds);
 
         const user = await prisma.user.findFirst({
           where: { email: creds.email }
@@ -74,7 +78,7 @@ export const authOptions: NextAuthOptions = {
     maxAge: 15 * 24 * 30 * 60 * 2 // 30 days
   },
   pages: {
-    signIn: "/",
+    signIn: "/auth/sign-in",
     newUser: "auth/sign-up"
   },
 };
