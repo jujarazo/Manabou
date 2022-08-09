@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { requireAuth } from '../commons/requireAuth';
+import { MainCard } from '../components/cards/MainCard';
 import { trpc } from '../utils/trpc';
 
 type TechnologyCardProps = {
@@ -12,37 +13,40 @@ export const getServerSideProps = requireAuth(async (ctx) => {
   return { props: {} };
 });
 
+const dummyCards = [
+  {
+    id: 1,
+    title: 'Overlord',
+    description: 'Placeholder description',
+    type: {
+      id: 1,
+      description: 'Light Novel',
+    },
+    category: {
+      id: 1,
+      description: 'Seinen',
+    },
+  },
+];
 const Home: NextPage = () => {
   // const hello = trpc.useQuery(['example.hello', { text: 'from tRPC' }]);
 
   return (
     <>
-      <main className="container mx-auto flex flex-col items-center justify-center h-screen p-4">
+      <main className="container mx-auto flex flex-col items-center h-screen p-4">
         <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold">
-          Create <span className="text-salmon">T3</span> App
+          Sections
         </h1>
-        <p className="text-2xl text-gray-700">This stack uses:</p>
-        <div className="grid gap-3 pt-3 mt-3 text-center md:grid-cols-2 lg:w-2/3">
-          <TechnologyCard
-            name="NextJS"
-            description="The React framework for production"
-            documentation="https://nextjs.org/"
-          />
-          <TechnologyCard
-            name="TypeScript"
-            description="Strongly typed programming language that builds on JavaScript, giving you better tooling at any scale"
-            documentation="https://www.typescriptlang.org/"
-          />
-          <TechnologyCard
-            name="TailwindCSS"
-            description="Rapidly build modern websites without ever leaving your HTML"
-            documentation="https://tailwindcss.com/"
-          />
-          <TechnologyCard
-            name="tRPC"
-            description="End-to-end type-safe APIs made easy"
-            documentation="https://trpc.io/"
-          />
+        <div className="flex items-center">
+          {dummyCards.map((card) => (
+            <MainCard
+              key={card.title}
+              title={card.title}
+              description={card.description}
+              categoryDescription={card.category.description}
+              typeDescription={card.type.description}
+            />
+          ))}
         </div>
         <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
           {/* {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>} */}
