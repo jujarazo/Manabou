@@ -15,9 +15,9 @@ const MyApp: AppType = ({
   return (
     <SessionProvider session={session}>
       <Meta />
-      <MainLayout>
+      <>
         <Component {...pageProps} />
-      </MainLayout>
+      </>
     </SessionProvider>
   );
 };
@@ -42,7 +42,7 @@ export default withTRPC<AppRouter>({
     return {
       url,
       headers: {
-        "x-ssr": "1"
+        'x-ssr': '1',
       },
       transformer: superjson,
       /**

@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import { requireAuth } from '../commons/requireAuth';
 import { MainCard } from '../components/cards/MainCard';
+import { MainLayout } from '../layout/MainLayout';
 import { trpc } from '../utils/trpc';
 
 type TechnologyCardProps = {
@@ -32,7 +33,7 @@ const Home: NextPage = () => {
   // const hello = trpc.useQuery(['example.hello', { text: 'from tRPC' }]);
 
   return (
-    <>
+    <MainLayout>
       <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold">
         Sections
       </h1>
@@ -50,7 +51,7 @@ const Home: NextPage = () => {
       <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full">
         {/* {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>} */}
       </div>
-    </>
+    </MainLayout>
   );
 };
 export default Home;
