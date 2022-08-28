@@ -21,11 +21,102 @@ const dummyCards = [
     description: 'Placeholder description',
     type: {
       id: 1,
-      description: 'Light Novel',
+      description: 'ライトノベル',
     },
     category: {
       id: 1,
-      description: 'Seinen',
+      description: '青年',
+    },
+  },
+  {
+    id: 2,
+    title: 'Overlord',
+    description: 'Placeholder description',
+    type: {
+      id: 1,
+      description: 'ライトノベル',
+    },
+    category: {
+      id: 1,
+      description: '青年',
+    },
+  },
+  {
+    id: 3,
+    title: 'Overlord',
+    description: 'Placeholder description',
+    type: {
+      id: 1,
+      description: 'ライトノベル',
+    },
+    category: {
+      id: 1,
+      description: '青年',
+    },
+  },
+  {
+    id: 4,
+    title: 'Overlord',
+    description: 'Placeholder description',
+    type: {
+      id: 1,
+      description: 'ライトノベル',
+    },
+    category: {
+      id: 1,
+      description: '青年',
+    },
+  },
+  {
+    id: 5,
+    title: 'Overlord',
+    description: 'Placeholder description',
+    type: {
+      id: 1,
+      description: 'ライトノベル',
+    },
+    category: {
+      id: 1,
+      description: '青年',
+    },
+  },
+  {
+    id: 5,
+    title: 'Overlord',
+    description: 'Placeholder description',
+    type: {
+      id: 1,
+      description: 'ライトノベル',
+    },
+    category: {
+      id: 1,
+      description: '青年',
+    },
+  },
+  {
+    id: 5,
+    title: 'Overlord',
+    description: 'Placeholder description',
+    type: {
+      id: 1,
+      description: 'ライトノベル',
+    },
+    category: {
+      id: 1,
+      description: '青年',
+    },
+  },
+  {
+    id: 5,
+    title: 'Overlord',
+    description: 'Placeholder description',
+    type: {
+      id: 1,
+      description: 'ライトノベル',
+    },
+    category: {
+      id: 1,
+      description: '青年',
     },
   },
 ];
@@ -37,7 +128,7 @@ const Home: NextPage = () => {
       <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold">
         Sections
       </h1>
-      <div className="flex items-center">
+      <div className="flex items-center overflow-x-auto space-x-6">
         {dummyCards.map((card) => (
           <MainCard
             key={card.title}

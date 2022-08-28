@@ -10,8 +10,8 @@ export const MainCard = (props: MainCardProps) => {
 
   return (
     <div className="h-64 w-44 rounded-md bg-purple relative group hover:cursor-pointer flex flex-col justify-end">
-      <div className="opacity-0 bg-black group-hover:opacity-25 h-full rounded-r-md flex flex-col justify-end absolute top-0 left-0 w-full"></div>
-      <div className="p-4 opacity-0 group-hover:opacity-100">
+      <div className="opacity-25 md:opacity-0 bg-black md:group-hover:opacity-25 h-full rounded-r-md flex flex-col justify-end absolute top-0 left-0 w-full"></div>
+      <div className="p-4 md:opacity-0 group-hover:opacity-100">
         <p className="text-xl font-semibold">{title}</p>
         <p className="text-base truncate">{description}</p>
         <div className="flex items-center space-x-2 mt-2">
